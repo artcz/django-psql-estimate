@@ -14,9 +14,9 @@ def humanize(value):
     return "%s %s" % (number, word)
 
 
-def count_estimate(query, short=True):
+def count_estimate(queryset, short=True):
     cursor = connection.cursor()
-    cursor.execute("SELECT count_estimate('%s')" % query)
+    cursor.execute("SELECT count_estimate('%s')" % str(queryset.query))
     count = cursor.fetchone()[0]
 
     if short:
